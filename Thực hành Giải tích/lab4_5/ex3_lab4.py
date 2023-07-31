@@ -1,0 +1,60 @@
+import sympy as sp
+import numpy as np
+import matplotlib.pyplot as plt
+x = sp.symbols('x')
+#ex3_a
+fx_a = 5*x - 3*(x**2) # x=1
+val = np.arange(-10,10,0.1)
+df_a= sp.diff(fx_a,x)
+slope_a = df_a.subs(x,1)
+y_tagent_a = slope_a*(x-1)+fx_a.subs(x,1)
+f_val_a = sp.lambdify(x,fx_a,"numpy")(val)
+f_tagent_a = sp.lambdify(x,y_tagent_a,"numpy")(val)
+plt.plot(val,f_val_a,color='red',label="Fx_a")
+plt.plot(val,f_tagent_a,color='blue',label="Tagent_a")
+plt.title("Ex_a with slope = "+str(slope_a))
+plt.legend()
+plt.grid(linestyle='--')
+plt.show()
+#ex3_b
+fx_b= 1/(x-1) #x=3
+val = np.arange(1.5,10,0.1)
+df_b=sp.diff(fx_b,x)
+slope_b= df_b.subs(x,3)
+y_tagent_b= slope_b*(x-3)+ fx_b.subs(x,3)
+f_val_b = sp.lambdify(x,fx_b,"numpy")(val)
+f_tagent_b = sp.lambdify(x,y_tagent_b,"numpy")(val)
+plt.plot(val,f_val_b,color='red',label='Fx_b')
+plt.plot(val,f_tagent_b,color='blue',label='Tagent_b')
+plt.title("Ex_b with slope = "+str(slope_b))
+plt.legend()
+plt.grid(linestyle='--')
+plt.show()
+#ex3_c
+fx_c = x**3 - 2*x + 7 #x=2
+val= np.arange(-6,8,0.1)
+df_c= sp.diff(fx_c,x)
+slope_c=df_c.subs(x,2)
+y_tagent_c= slope_c*(x-2)+fx_c.subs(x,2)
+f_val_c= sp.lambdify(x,fx_c,"numpy")(val)
+f_tagent_c=sp.lambdify(x,y_tagent_c,"numpy")(val)
+plt.plot(val,f_val_c,color='red',label='Fx_c')
+plt.plot(val,f_tagent_c,color='blue',label='Tagent_c')
+plt.title("Ex_c with slope = "+str(slope_c))
+plt.legend()
+plt.grid(linestyle='--')
+plt.show()
+#ex3_d
+fx_d = (x-1)/(x+1)  #x=0
+val = np.arange(-1,5,0.1)
+df_d = sp.diff(fx_d,x)
+slope_d= df_d.subs(x,0)
+y_tagent_d= slope_d*(x)+fx_d.subs(x,0)
+f_val_d=sp.lambdify(x,fx_d,"numpy")(val)
+f_tagent_d =sp.lambdify(x,y_tagent_d,"numpy")(val)
+plt.plot(val,f_val_d,color='red',label='Fx_d')
+plt.plot(val,f_tagent_d,color='blue',label='Tagent_d')
+plt.title("Ex_d with slope = "+str(slope_d))
+plt.legend()
+plt.grid(linestyle='--')
+plt.show()	
